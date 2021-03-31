@@ -8,12 +8,12 @@
 #include "Arduino.h"
 #include "MaxMatrix.h"
 
-MaxMatrix::MaxMatrix(byte _data, byte _load, byte _clock, byte _num) 
+MaxMatrix::MaxMatrix(byte _data, byte _load, byte _clock, byte _maxNum) 
 {
 	data = _data;
 	load = _load;
 	clock = _clock;
-	num = _num;
+	maxNum = _maxNum;
 	for (int i=0; i<80; i++)
 		buffer[i] = 0;
 }
@@ -53,7 +53,7 @@ void MaxMatrix::clear()
 void MaxMatrix::setCommand(byte command, byte value)
 {
 	digitalWrite(load, LOW);    
-	for (int i=0; i<num; i++) 
+	for (int i=0; i<maxNum; i++) 
 	{
 		shiftOut(data, clock, MSBFIRST, command);
 		shiftOut(data, clock, MSBFIRST, value);
@@ -68,7 +68,7 @@ void MaxMatrix::setColumn(byte col, byte value)
 	int n = col / 8;
 	int c = col % 8;
 	digitalWrite(load, LOW);    
-	for (int i=0; i<num; i++) 
+	for (int i=0; i<maxNum; i++) 
 	{
 		if (i == n)
 		{
@@ -90,7 +90,7 @@ void MaxMatrix::setColumn(byte col, byte value)
 void MaxMatrix::setColumnAll(byte col, byte value)
 {
 	digitalWrite(load, LOW);    
-	for (int i=0; i<num; i++) 
+	for (int i=0; i<maxNum; i++) 
 	{
 		shiftOut(data, clock, MSBFIRST, col + 1);
 		shiftOut(data, clock, MSBFIRST, value);
@@ -107,7 +107,7 @@ void MaxMatrix::setDot(byte col, byte row, byte value)
 	int n = col / 8;
 	int c = col % 8;
 	digitalWrite(load, LOW);    
-	for (int i=0; i<num; i++) 
+	for (int i=0; i<maxNum; i++) 
 	{
 		if (i == n)
 		{
@@ -153,7 +153,7 @@ void MaxMatrix::reload()
 	{
 		int col = i;
 		digitalWrite(load, LOW);    
-		for (int j=0; j<num; j++) 
+		for (int j=0; j<maxNum; j++) 
 		{
 			shiftOut(data, clock, MSBFIRST, i + 1);
 			shiftOut(data, clock, MSBFIRST, buffer[col]);
@@ -170,15 +170,15 @@ void MaxMatrix::shiftLeft(bool rotate, bool fill_zero)
 	int i;
 	for (i=0; i<80; i++)
 		buffer[i] = buffer[i+1];
-	if (rotate) buffer[num*8-1] = old;
-	else if (fill_zero) buffer[num*8-1] = 0;
+	if (rotate) buffer[maxNum*8-1] = old;
+	else if (fill_zero) buffer[maxNum*8-1] = 0;
 	
 	reload();
 }
 
 void MaxMatrix::shiftRight(bool rotate, bool fill_zero)
 {
-	int last = num*8-1;
+	int last = maxNum*8-1;
 	byte old = buffer[last];
 	int i;
 	for (i=79; i>0; i--)
@@ -191,7 +191,7 @@ void MaxMatrix::shiftRight(bool rotate, bool fill_zero)
 
 void MaxMatrix::shiftUp(bool rotate)
 {
-	for (int i=0; i<num*8; i++)
+	for (int i=0; i<maxNum*8; i++)
 	{
 		bool b = buffer[i] & 1;
 		buffer[i] >>= 1;
@@ -202,7 +202,7 @@ void MaxMatrix::shiftUp(bool rotate)
 
 void MaxMatrix::shiftDown(bool rotate)
 {
-	for (int i=0; i<num*8; i++)
+	for (int i=0; i<maxNum*8; i++)
 	{
 		bool b = buffer[i] & 128;
 		buffer[i] <<= 1;
@@ -211,4 +211,38 @@ void MaxMatrix::shiftDown(bool rotate)
 	reload();
 }
 
+void MaxMatrix::printCharWithShift(char c, int shift_speed){
+  if (c < 32) return;
+  c -= 32;
+  memcpy_P(charBuffer, CH + 7*c, 7);
+  writeSprite(maxNum*8, 0, charBuffer);
+  setColumn(maxNum*8 + charBuffer[0], 0);
+  
+  for (int i=0; i<charBuffer[0]+1; i++) 
+  {
+    delay(shift_speed);
+    shiftLeft(false, false);
+  }
+}
 
+void MaxMatrix::printStringWithShift(char* s, int shift_speed){
+  while (*s != 0){
+    printCharWithShift(*s, shift_speed);
+    s++;
+  }
+}
+
+void MaxMatrix::printString(char* s)
+{
+  int col = 0;
+  while (*s != 0)
+  {
+    if (*s < 32) continue;
+    char c = *s - 32;
+    memcpy_P(charBuffer, CH + 7*c, 7);
+    writeSprite(col, 0, charBuffer);
+    setColumn(col + charBuffer[0], 0);
+    col += charBuffer[0] + 1;
+    s++;
+  }
+}
