@@ -37,6 +37,11 @@ const uint8_t           CS_PIN                  = 10;
 
 const size_t            BUFF_SIZE               = 75;
 
+/*          TIMER           */
+//Calibrated 1 second _delay_ms equivalent
+const uint16_t SECONDS_C = 248;
+const uint8_t NUM_ZERO_BLINK_CYCLES = 8;
+
 extern char curr_message[BUFF_SIZE];
 extern char new_message[BUFF_SIZE];
 extern bool new_message_available;
@@ -51,6 +56,7 @@ class FC16 {
         textEffect_t scroll_effect;
         textPosition_t scroll_align;
         uint16_t scroll_pause;
+        uint8_t state;
     public: 
         FC16();
         FC16(uint8_t s_speed, textEffect_t s_effect,
@@ -60,11 +66,14 @@ class FC16 {
         textEffect_t get_scroll_effect();
         textPosition_t get_scroll_align();
         uint16_t get_scroll_pause();
+        uint8_t get_state();
 
+        void set_static_align(textPosition_t s_align);
         void set_scroll_speed(uint8_t s_speed);
         void set_scroll_effect(textEffect_t s_effect);
         void set_scroll_align(textPosition_t s_align);
         void set_scroll_pause(uint16_t s_pause);
+        void set_state(uint8_t st);
 
         void init();
         void reset();
@@ -72,7 +81,10 @@ class FC16 {
         void update();
 
         void display_static_text(const char *s);
+        void display_static_text(const int num);
         void display_scrolling_text(const char *s);
+
+        void countdown(uint16_t ct_time);
 
         //friend void read_serial(void);
 
