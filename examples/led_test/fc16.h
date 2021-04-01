@@ -39,7 +39,7 @@ const size_t            BUFF_SIZE               = 75;
 
 /*          TIMER           */
 //Calibrated 1 second _delay_ms equivalent
-const uint16_t SECONDS_C = 248;
+const uint16_t SECONDS_C = 245;
 const uint8_t NUM_ZERO_BLINK_CYCLES = 8;
 
 extern char curr_message[BUFF_SIZE];
@@ -68,6 +68,12 @@ class FC16 {
         uint16_t get_scroll_pause();
         uint8_t get_state();
 
+        /* Brightness range = [0,15]     *
+         * Dim = 0                       *
+         * Normal = 5                    *
+         * Bright = 10                   *
+         * Very Bright = 15+ (stops ~15) */
+        void set_brightness(uint8_t bn);
         void set_static_align(textPosition_t s_align);
         void set_scroll_speed(uint8_t s_speed);
         void set_scroll_effect(textEffect_t s_effect);

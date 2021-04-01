@@ -33,6 +33,7 @@ textPosition_t FC16::get_scroll_align() { return this->scroll_align; }
 uint16_t FC16::get_scroll_pause()       { return this->scroll_pause; }
 uint8_t FC16::get_state()               { return this->state; }
 
+void FC16::set_brightness(uint8_t bn)               { P->setIntensity(bn); }
 void FC16::set_static_align(textPosition_t s_align) { P->setTextAlignment(s_align); }
 void FC16::set_scroll_speed(uint8_t s_speed)        { this->scroll_speed = s_speed; }
 void FC16::set_scroll_effect(textEffect_t s_effect) { this->scroll_effect = s_effect; }
@@ -82,6 +83,9 @@ void FC16::display_scrolling_text(const char *s) {
 void FC16::countdown(uint16_t ct_time) {
   reset();
   set_static_align(PA_CENTER);
+
+  display_static_text("Ready?");
+  _delay_ms(400);
 
   char count_str[6] = "";
   char minutes_str[3] = "";

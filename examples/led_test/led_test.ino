@@ -19,11 +19,11 @@ void setup()
 {
   Serial.begin(9600);
   led.init();
-  led.countdown(15); //In seconds
+  led.set_brightness(10);
+  led.countdown(25); //In seconds
 }
 
 void loop()
 {
 
-  
 }
