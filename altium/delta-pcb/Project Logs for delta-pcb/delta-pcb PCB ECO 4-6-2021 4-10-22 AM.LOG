@@ -1,0 +1,4 @@
+Change Component Description : Designator=U1 Old Description=ATmega328 Arduino Pro Mini 328 5V/16MHz AVR® ATmega AVR MCU 8-Bit Embedded Evaluation Board New Description=ATmega328 Arduino Pro Mini 328 5V/16MHz AVR® ATmega AVR MCU 8-Bit Embedded Evaluation Board 
+Added Pin To Net: NetName=GND Pin=P3-2
+Added Member To Class: ClassName=delta-pcb-main Member=Component C1 100nF
+Added Room: Name=delta-pcb-main

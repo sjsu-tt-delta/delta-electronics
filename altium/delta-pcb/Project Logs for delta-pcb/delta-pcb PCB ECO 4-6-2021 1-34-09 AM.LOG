@@ -1,0 +1,38 @@
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=VCC Pin=C1-2
+Added Pin To Net: NetName=VCC Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=NetLS1_1 Pin=LS1-1A
+Added Pin To Net: NetName=NetLS1_1 Pin=LS1-1
+Added Pin To Net: NetName=GND Pin=LS1-2A
+Added Pin To Net: NetName=GND Pin=LS1-2
+Added Pin To Net: NetName=VCC Pin=P1-1
+Added Pin To Net: NetName=GND Pin=P1-5
+Added Pin To Net: NetName=VCC Pin=P2-1
+Added Pin To Net: NetName=GND Pin=P2-2
+Added Pin To Net: NetName=NetP2_3 Pin=P2-3
+Added Pin To Net: NetName=NetP2_4 Pin=P2-4
+Added Pin To Net: NetName=NetP2_5 Pin=P2-5
+Added Pin To Net: NetName=VCC Pin=P3-1
+Added Pin To Net: NetName=GND Pin=P3-2
+Added Pin To Net: NetName=NetP3_3 Pin=P3-3
+Added Pin To Net: NetName=NetP3_4 Pin=P3-4
+Added Pin To Net: NetName=VCC Pin=U1-JP1_4
+Added Pin To Net: NetName=GND Pin=U1-JP1_5
+Added Pin To Net: NetName=GND Pin=U1-JP1_6
+Added Pin To Net: NetName=GND Pin=U1-JP6_2
+Added Pin To Net: NetName=VCC Pin=U1-JP6_4
+Added Pin To Net: NetName=NetP2_5 Pin=U1-JP6_9
+Added Pin To Net: NetName=NetP2_3 Pin=U1-JP6_11
+Added Pin To Net: NetName=NetP2_4 Pin=U1-JP6_12
+Added Pin To Net: NetName=NetLS1_1 Pin=U1-JP7_2
+Added Pin To Net: NetName=NetP3_4 Pin=U1-JP7_7
+Added Pin To Net: NetName=NetP3_3 Pin=U1-JP7_8
+Added Pin To Net: NetName=GND Pin=U1-JP7_9
+Added Member To Class: ClassName=delta-pcb-main Member=Component C1 100nF
+Added Member To Class: ClassName=delta-pcb-main Member=Component C2 4.7uF
+Added Member To Class: ClassName=delta-pcb-main Member=Component LS1 Buzzer
+Added Member To Class: ClassName=delta-pcb-main Member=Component P1 µUSB-B Breakout
+Added Member To Class: ClassName=delta-pcb-main Member=Component P2 FC16 LED Matrix
+Added Member To Class: ClassName=delta-pcb-main Member=Component P3 AT09
+Added Member To Class: ClassName=delta-pcb-main Member=Component U1 ARDUINO_PRO_MINI

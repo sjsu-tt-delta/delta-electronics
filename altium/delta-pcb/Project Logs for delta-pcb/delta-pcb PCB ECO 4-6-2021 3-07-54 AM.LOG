@@ -1,0 +1,3 @@
+Added Pin To Net: NetName=GND Pin=U1-JP6_2
+Added Member To Class: ClassName=delta-pcb-main Member=Component U1 ARDUINO_PRO_MINI
+Added Room: Name=delta-pcb-main

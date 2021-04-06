@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=VCC Pin=P2-1
+Removed Pin From Net: NetName=GND Pin=P4-4
+Removed Member From Class: ClassName=delta-pcb-main Member=P4
+Added Pin To Net: NetName=NetP3_2 Pin=P3-2
+Added Pin To Net: NetName=NetP3_2 Pin=U1-JP6_2
+Added Net: Name=NetP3_2
