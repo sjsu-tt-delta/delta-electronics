@@ -1,4 +1,4 @@
-# Theta Tau App Delta Pledge Class Technical Project
+# Theta Tau App Delta Pledge Class Technical Project Electronics
 
 ## Quick Links
 [Gantt Chart and Consolidated Sheet](https://docs.google.com/spreadsheets/d/1VhCbg1d47hBmEg20Uc_-arUAMw05hEPBOkWhSjltqOU/edit#gid=574701751)
