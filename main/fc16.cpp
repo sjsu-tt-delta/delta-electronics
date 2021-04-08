@@ -85,7 +85,7 @@ void FC16::countdown(uint16_t ct_time) {
   set_static_align(PA_CENTER);
 
   display_static_text("Ready?");
-  _delay_ms(400);
+  _delay_ms(SECONDS_C);
 
   char count_str[6] = "";
   char minutes_str[3] = "";
@@ -137,6 +137,26 @@ void FC16::countdown(uint16_t ct_time) {
     display_static_text("00:00");
     _delay_ms(SECONDS_C >> 2);
   }
+}
+
+const char * FC16::bluetooth_string_conversion(char * str) {
+  //Copy rest of data AFTER idx 0 identifier
+  char *temp = (char*)malloc(strlen(str));
+  
+  if (str[0] == 'a') {
+    state = 0;
+  }
+  if (str[0] == 'b') {
+    state = 1;
+  }
+  
+  for (int i = 1; i < strlen(str); i++) {
+      //Copy str into temp
+      temp[i-1] = str[i];
+  }
+  temp[strlen(str)-1] = '\0';
+  
+  return temp;
 }
 
 void read_serial(void)

@@ -14,7 +14,6 @@
 #include <MD_Parola.h>
 #include <MD_MAX72xx.h>
 
-using namespace std;
 // Global message buffers shared by Serial and Scrolling functions
 /*
 #define  BUF_SIZE  75
@@ -25,6 +24,15 @@ bool newMessageAvailable = true;
 
 //MD_MAX72XX::moduleType_t mod, uint8_t csPin, uint8_t numDevices = 1
 
+/*          TIMER           */
+//Calibrated 1 second _delay_ms equivalent
+//Pro Mini:
+//const uint16_t          SECONDS_C               = 245;
+//Uno:
+const uint16_t          SECONDS_C               = 985;
+const uint8_t           NUM_ZERO_BLINK_CYCLES   = 8;
+
+/*           LED            */
 const uint8_t           DEFAULT_SCROLL_SPEED    = 25;
 const textEffect_t      DEFAULT_SCROLL_EFFECT   = PA_SCROLL_LEFT;
 const textPosition_t    DEFAULT_SCROLL_ALIGN    = PA_LEFT;
@@ -37,10 +45,9 @@ const uint8_t           CS_PIN                  = 10;
 
 const size_t            BUFF_SIZE               = 75;
 
-/*          TIMER           */
-//Calibrated 1 second _delay_ms equivalent
-const uint16_t SECONDS_C = 245;
-const uint8_t NUM_ZERO_BLINK_CYCLES = 8;
+/*          STATES          */
+const uint8_t           TEXT_DISPLAY            = 0;
+const uint8_t           COUNTDOWN               = 1;
 
 extern char curr_message[BUFF_SIZE];
 extern char new_message[BUFF_SIZE];
@@ -90,7 +97,10 @@ class FC16 {
         void display_static_text(const int num);
         void display_scrolling_text(const char *s);
 
+        const char * bluetooth_string_conversion(char * str);
+
         void countdown(uint16_t ct_time);
+
 
         //friend void read_serial(void);
 
