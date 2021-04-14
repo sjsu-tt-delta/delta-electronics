@@ -1,7 +1,31 @@
 # Theta Tau App Delta Pledge Class Technical Project Electronics
+Electronics repository of the Delta Pledge Class. This repository includes the firmware of the embedded system and files for the Altium Designer PCB.
+
+## Project Demo
+### Video Demonstration
+[![](https://img.youtube.com/vi/TmD5nkqbt0g/0.jpg)](https://www.youtube.com/watch?v=TmD5nkqbt0g)
+### Altium PCB & Schematics
+![](images/Altium_PCB_Layout_3D_Front.png)
+<br/>
+![](images/Altium_PCB_Layout_3D_Back.png)
+<br/>
+![](images/Altium_PCB_Layout_2D.png)
+<br/>
+![](images/Altium_CircuitSchematic.png)
+<br/>
+
+### SolidWorks Electronics Enclosure
+Courtesy of the Hardware Committee :)<br/>
+![](images/SolidWorks_Enclosure.png)
+<br/>
+
+## Electronics Committee
+_Vincent Saw_ - Project Director, Electronics Lead, Firmware & Hardware Engineer - LED matrix, Bluetooth LE, PCB<br/>
+Anthony Lal - Firmware & Hardware Engineer - Bluetooth LE<br/>
 
 ## Quick Links
-[Gantt Chart and Consolidated Sheet](https://docs.google.com/spreadsheets/d/1VhCbg1d47hBmEg20Uc_-arUAMw05hEPBOkWhSjltqOU/edit#gid=574701751)
+[Gantt Chart and Consolidated Sheet](https://docs.google.com/spreadsheets/d/1VhCbg1d47hBmEg20Uc_-arUAMw05hEPBOkWhSjltqOU/edit#gid=574701751)<br/>
+[Project Presentation](https://docs.google.com/presentation/d/1MC0XHRqNYXeY45uN3Q5Jt8sAotjQurosrFn7ysKqrGg/edit?usp=sharing)<br/>
 
 ## Getting Started with Git & GitHub
 
